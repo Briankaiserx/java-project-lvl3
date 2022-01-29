@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class BaseSchema {
+public class BaseSchema {
 
     private List<Predicate<Object>> rules = new ArrayList<>();
 
-    public void addRequirement(Predicate<Object> rule) {
+    public final void addRequirement(Predicate<Object> rule) {
         rules.add(rule);
     }
 

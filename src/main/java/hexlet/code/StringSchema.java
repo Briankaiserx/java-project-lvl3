@@ -2,15 +2,15 @@ package hexlet.code;
 
 public class StringSchema extends BaseSchema {
 
-    public StringSchema required() {
+    public final StringSchema required() {
      addRequirement(x -> x instanceof String && !((String) x).trim().isEmpty());
      return this;
     }
-     public StringSchema contains(String str) {
+     public final StringSchema contains(String str) {
         addRequirement(x -> x instanceof String && ((String) x).contains(str));
         return this;
      }
-    public StringSchema minLength(int length) {
+    public final StringSchema minLength(int length) {
         addRequirement(x -> x instanceof String && ((String) x).trim().length() >= length);
         return this;
     }
