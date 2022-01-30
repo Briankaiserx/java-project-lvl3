@@ -11,7 +11,7 @@ public class StringSchema extends BaseSchema {
         return this;
      }
     public final StringSchema minLength(int length) {
-        addRequirement(x -> x instanceof String && ((String) x).trim().length() >= length);
+        addRequirement(x -> x instanceof String && ((String) x).length() >= length);
         return this;
     }
 
