@@ -13,7 +13,7 @@ public class BaseSchema {
     }
 
     public final boolean isValid(Object data) {
-        for (Predicate<Object> requirement : this.rules) {
+        for (Predicate<Object> requirement : rules) {
             if (!requirement.test(data)) {
                 return false;
             }

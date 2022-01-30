@@ -26,6 +26,15 @@ public class TestValidator {
         assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
 
     }
+    @Test
+    public void testValidatorStringMinLength() {
+        //Почему-то тест работал некорректно, когда я его поместил в общий метод теста testValidatorString()
+        Validator v = new Validator();
+        StringSchema schema = v.stringSchema();
+        schema.required();
+        assertTrue(schema.minLength(2).isValid("fo"));
+        assertFalse(schema.minLength(maxNumber).isValid("what"));
+    }
     private final int nimNumber = 3;
     private final int maxNumber = 8;
     @Test
@@ -42,7 +51,7 @@ public class TestValidator {
 
 
         assertTrue(schema.positive().isValid(maxNumber));
-        assertFalse(schema.isValid(-maxNumber)); // false
+        assertFalse(schema.isValid(-maxNumber));
         assertFalse(schema.positive().isValid(null));
 
         schema.required();
