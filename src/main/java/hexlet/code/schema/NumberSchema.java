@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.schema;
 
 public class NumberSchema extends BaseSchema {
 
