@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 public class MapSchema extends BaseSchema {
 
     public final MapSchema required() {
-        addRequirement(x -> x instanceof Map<?, ?>);
+        addRequirement(x -> x instanceof Map);
         return this;
     }
 
