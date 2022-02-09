@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class BaseSchema {
+public abstract class BaseSchema {
 
     private List<Predicate<Object>> rules = new ArrayList<>();
 

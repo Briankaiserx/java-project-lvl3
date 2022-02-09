@@ -1,6 +1,7 @@
 package hexlet.code;
 
 
+import hexlet.code.schema.BaseSchema;
 import hexlet.code.schema.MapSchema;
 import hexlet.code.schema.NumberSchema;
 import hexlet.code.schema.StringSchema;
@@ -89,5 +90,36 @@ public class TestValidator {
         str.put("key2", "value2");
         assertTrue(schema.isValid(str));
     }
-}
 
+    @Test
+    public void testNested() {
+        Validator v = new Validator();
+
+        MapSchema schema = v.mapSchema();
+
+        Map<String, BaseSchema> schemas = new HashMap<>();
+        schemas.put("name", v.stringSchema().required());
+        schemas.put("age", v.numberSchema().positive());
+        schema.shape(schemas);
+
+        Map<String, Object> human1 = new HashMap<>();
+        human1.put("name", "Kolya");
+        human1.put("age", maxNumber);
+        assertTrue(schema.isValid(human1));
+
+        Map<String, Object> human2 = new HashMap<>();
+        human2.put("name", "Maya");
+        human2.put("age", null);
+        assertFalse(schema.isValid(human2));
+
+        Map<String, Object> human3 = new HashMap<>();
+        human3.put("name", "");
+        human3.put("age", null);
+        assertFalse(schema.isValid(human3));
+
+        Map<String, Object> human4 = new HashMap<>();
+        human4.put("name", "Valya");
+        human4.put("age", -nimNumber);
+        assertFalse(schema.isValid(human4));
+    }
+}
