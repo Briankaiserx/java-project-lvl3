@@ -34,8 +34,16 @@ public class TestValidator {
         schema.required();
         assertTrue(schema.contains("what").isValid("what does the fox say"));
         assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
-        assertFalse(schema.isValid("what does the fox say"));
 
+    }
+    @Test
+    public void testValidatorStringMinLength() {
+        //Почему-то тест работал некорректно, когда я его поместил в общий метод теста testValidatorString()
+        Validator v = new Validator();
+        StringSchema schema = v.string();
+        schema.required();
+        assertTrue(schema.minLength(nimNumber).isValid("for"));
+        assertFalse(schema.minLength(maxNumber).isValid("what"));
     }
     private final int nimNumber = 3;
     private final int maxNumber = 8;
