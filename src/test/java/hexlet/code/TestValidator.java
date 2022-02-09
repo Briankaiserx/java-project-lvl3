@@ -58,7 +58,6 @@ public class TestValidator {
 
         assertTrue(schema.positive().isValid(maxNumber));
         assertFalse(schema.isValid(-maxNumber));
-        assertFalse(schema.positive().isValid(null));
 
         schema.required();
         schema.range(nimNumber, maxNumber);
@@ -110,7 +109,7 @@ public class TestValidator {
         Map<String, Object> human2 = new HashMap<>();
         human2.put("name", "Maya");
         human2.put("age", null);
-        assertFalse(schema.isValid(human2));
+        assertTrue(schema.isValid(human2));
 
         Map<String, Object> human3 = new HashMap<>();
         human3.put("name", "");

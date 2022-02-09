@@ -9,7 +9,7 @@ public abstract class BaseSchema {
     private List<Predicate<Object>> rules = new ArrayList<>();
 
     public final void addRequirement(Predicate<Object> rule) {
-        rules.add(rule);
+       rules.add(rule);
     }
 
     public final boolean isValid(Object data) {

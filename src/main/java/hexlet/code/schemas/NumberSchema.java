@@ -7,11 +7,11 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
     public final NumberSchema positive() {
-        addRequirement(x -> x instanceof Integer && (Integer) x > 0);
+        addRequirement(x -> x == null || x instanceof Integer && (int) x > 0 && (int) x != 0);
         return this;
     }
     public final NumberSchema range(int minNum, int maxNum) {
-        addRequirement(x -> x instanceof Integer && (int) x >= minNum && (int) x <= maxNum);
+        addRequirement(x -> x instanceof Integer && (((Integer) x) >= minNum && ((Integer) x) <= maxNum));
         return this;
     }
 
