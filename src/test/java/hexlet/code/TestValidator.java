@@ -19,7 +19,7 @@ public class TestValidator {
     @Test
     public void testValidatorString() {
         Validator v = new Validator();
-        StringSchema schema = v.stringSchema();
+        StringSchema schema = v.string();
         assertTrue(schema.isValid(null));
 
         schema.required();
@@ -36,7 +36,7 @@ public class TestValidator {
     public void testValidatorStringMinLength() {
         //Почему-то тест работал некорректно, когда я его поместил в общий метод теста testValidatorString()
         Validator v = new Validator();
-        StringSchema schema = v.stringSchema();
+        StringSchema schema = v.string();
         schema.required();
         assertTrue(schema.minLength(2).isValid("fo"));
         assertFalse(schema.minLength(maxNumber).isValid("what"));
@@ -46,7 +46,7 @@ public class TestValidator {
     @Test
     public void testValidatorNumber() {
         Validator v = new Validator();
-        NumberSchema schema = v.numberSchema();
+        NumberSchema schema = v.number();
         assertTrue(schema.isValid(null));
 
         schema.required();
@@ -71,7 +71,7 @@ public class TestValidator {
     @Test
     public void testValidatorMap() {
         Validator v = new Validator();
-        MapSchema schema = v.mapSchema();
+        MapSchema schema = v.map();
         assertTrue(schema.isValid(null));
 
         schema.required();
@@ -92,14 +92,14 @@ public class TestValidator {
     }
 
     @Test
-    public void testNested() {
+    public void testValidatorMapShape() {
         Validator v = new Validator();
 
-        MapSchema schema = v.mapSchema();
+        MapSchema schema = v.map();
 
         Map<String, BaseSchema> schemas = new HashMap<>();
-        schemas.put("name", v.stringSchema().required());
-        schemas.put("age", v.numberSchema().positive());
+        schemas.put("name", v.string().required());
+        schemas.put("age", v.number().positive());
         schema.shape(schemas);
 
         Map<String, Object> human1 = new HashMap<>();
