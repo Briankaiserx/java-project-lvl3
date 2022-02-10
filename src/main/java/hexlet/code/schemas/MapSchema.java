@@ -17,6 +17,7 @@ public class MapSchema extends BaseSchema {
         addRequirement(x -> x instanceof Map && ((Map<?, ?>) x).size() == keySize);
         return this;
     }
+
     public final void shape(final Map<String, BaseSchema> mapShape) {
         final Predicate<Object> shape = x -> {
             List<Boolean> result = new ArrayList<>();
